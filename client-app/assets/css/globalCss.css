@@ -1,0 +1,32 @@
+:root{
+--cor-fundo-nav-bar:#ffff;
+
+}
+
+.btn-salvar{
+    background: rgb(6, 158, 6);
+color: white;
+border: none;
+transition: 0.2s;
+padding: 8px 15px;
+}
+.btn-salvar:hover{
+background: rgb(0, 83, 0);
+    transition: 0.2s;
+}
+
+
+.btn-cancelar{
+    background: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+border-bottom:thin 2px;
+border-top: none;
+border-left: none;
+border-right: none;
+transition: 0.2s;
+padding: 8px 15px;
+}
+.btn-salvar:hover{
+background: rgb(0, 83, 0);
+    transition: 0.2s;
+}
