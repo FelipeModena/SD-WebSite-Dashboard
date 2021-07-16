@@ -1,5 +1,4 @@
-﻿using SD_WebSite_DashBoardApi.Data;
-using SD_WebSite_DashBoardApi.Models;
+﻿using SD_WebSite_DashBoardApi.Models;
 using SD_WebSite_DashBoardApi.Repository;
 using System;
 

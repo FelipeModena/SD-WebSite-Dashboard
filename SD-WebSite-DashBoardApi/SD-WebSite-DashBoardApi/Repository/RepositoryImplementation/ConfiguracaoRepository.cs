@@ -1,10 +1,7 @@
-﻿using SD_WebSite_DashBoardApi.Data;
-using SD_WebSite_DashBoardApi.Models;
+﻿using SD_WebSite_DashBoardApi.Models;
 using SD_WebSite_DashBoardApi.Models.Context;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace SD_WebSite_DashBoardApi.Repository.RepositoryImplementation
 {

@@ -1,6 +1,4 @@
-﻿using SD_WebSite_DashBoardApi.Data;
-using SD_WebSite_DashBoardApi.Models;
-using System.Collections.Generic;
+﻿using SD_WebSite_DashBoardApi.Models;
 
 namespace SD_WebSite_DashBoardApi
 {
