@@ -35,25 +35,38 @@ namespace SD_WebSite_DashBoardApi.Controllers
             var administrador = _administradorBusiness.FindById(id);
             return Ok(administrador);
         }
+
         [HttpGet("getConfiguracoes")]
         public IActionResult GetConfiguracoes()
         {
             return Ok(configuracaoBusiness.FindLast());
+           
         }
 
-        [HttpPut ("configuracoesNovas")]
-        public IActionResult ConfiguracoesNovas([FromBody] RodapeContatoVO configuracao)
+        [HttpPut ("configureRodape")]
+        public IActionResult ConfigureRodape([FromBody] Rodape rodape)
         {
-            if (configuracao == null)
+            if (rodape == null)
             {
                 return BadRequest();
             }
             else
             {
-                return Ok(/*configuracaoBusiness.Update(configuracao)*/);
+                return Ok(configuracaoBusiness.UpdateRodape(rodape));
             }
         }
 
-
+        [HttpPut("configureContato")]
+        public IActionResult ConfigureContato([FromBody] Contato contato)
+        {
+            if (contato == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                return Ok(configuracaoBusiness.UpdateContato(contato));
+            }
+        }
     }
 }

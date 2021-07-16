@@ -1,4 +1,5 @@
 ﻿using SD_WebSite_DashBoardApi.Data;
+using SD_WebSite_DashBoardApi.Models;
 using SD_WebSite_DashBoardApi.Models.Context;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SD_WebSite_DashBoardApi.Repository.RepositoryImplementation
 {
-    public class ConfiguracaoRepository: IConfiguracaoRepository
+    public class ConfiguracaoRepository : IConfiguracaoRepository
     {
         private readonly MyDbContext dbContext;
 
@@ -18,16 +19,56 @@ namespace SD_WebSite_DashBoardApi.Repository.RepositoryImplementation
 
         public object FindLast()
         {
-            //var config = new RodapeContatoVO {
-            //    Contato =  dbContext.Contato.OrderBy(c=>c.Modificacao).Last(),
-            //    Rodape = dbContext.Rodape.OrderBy(c => c.Modificacao).Last()
-            //};
-            return new {};
+
+            try
+            {
+               
+                return new
+                {
+                    Contato = dbContext.Contato.OrderBy(c => c.Modificacao).Last(),
+                    Rodape = dbContext.Rodape.OrderBy(c => c.Modificacao).Last()
+                };
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
-        public RodapeContatoVO GetByDate(RodapeContatoVO configuracao)
+        public object UpdateContato(Contato contato)
         {
-            throw new NotImplementedException();
+            try
+            {
+                contato.Modificacao = System.DateTime.Now;
+                dbContext.Contato.Update(contato);
+
+                dbContext.SaveChanges();
+            return new { status="Contato atualizado com sucesso" };
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public object UpdateRodape(Rodape rodape)
+        {
+            try
+            {
+                rodape.Modificacao = System.DateTime.Now;
+                dbContext.Rodape.Update(rodape);
+
+                dbContext.SaveChanges();
+                return new { status = "Rodape atualizado com sucesso" };
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

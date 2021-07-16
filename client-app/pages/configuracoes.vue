@@ -4,92 +4,118 @@
     <b-container id="configuracoes-contato" class="w-100 p-4 configuracoes-forms">
       <b-row>
         <b-col>
-          <label for="configuracoes-input-endereco"><strong>Endereço</strong></label>
+          <label for="configuracoes-contato-input-endereco"
+            ><strong>Endereço</strong></label
+          >
           <input
             type="text"
-            id="configuracoes-input-endereco"
-            v-model="configs.endereco"
+            id="configuracoes-contato-input-endereco"
+            v-model="contato.endereco"
           />
         </b-col>
         <b-col>
-          <label for="configuracoes-input-complemento">Complemento</label>
+          <label for="configuracoes-contato-input-complemento">Complemento</label>
           <input
             type="text"
-            id="configuracoes-input-complemento"
-            v-model="configs.complemento"
+            id="configuracoes-contato-input-complemento"
+            v-model="contato.complemento"
           />
         </b-col>
         <b-col>
-          <label for="configuracoes-input-bairro">Bairro</label>
-          <input type="text" id="configuracoes-input-bairro" v-model="configs.bairro" />
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col>
-          <label for="configuracoes-input-cidade">Cidade</label>
-          <input type="text" id="configuracoes-input-cidade" v-model="configs.cidade" />
-        </b-col>
-        <b-col>
-          <label for="configuracoes-input-estado">Estado</label>
-          <input type="text" id="configuracoes-input-estado" v-model="configs.estado" />
-        </b-col>
-        <b-col>
-          <label for="configuracoes-input-telefone">Telefone</label>
+          <label for="configuracoes-contato-input-bairro">Bairro</label>
           <input
             type="text"
-            id="configuracoes-input-telefone"
-            v-model="configs.telefone"
+            id="configuracoes-contato-input-bairro"
+            v-model="contato.bairro"
           />
         </b-col>
       </b-row>
       <b-row>
         <b-col>
-          <label for="configuracoes-input-whatsapp">WhatsApp</label>
+          <label for="configuracoes-contato-input-cidade">Cidade</label>
           <input
             type="text"
-            id="configuracoes-input-whatsapp"
-            v-model="configs.whatsapp"
+            id="configuracoes-contato-input-cidade"
+            v-model="contato.cidade"
           />
         </b-col>
         <b-col>
-          <label for="configuracoes-input-email">E-mail</label>
-          <input type="text" id="configuracoes-input-email" v-model="configs.email" />
-        </b-col>
-        <b-col>
-          <label for="configuracoes-input-facebook">Facebook</label>
+          <label for="configuracoes-contato-input-estado">Estado</label>
           <input
             type="text"
-            id="configuracoes-input-facebook"
-            v-model="configs.facebook"
+            id="configuracoes-contato-input-estado"
+            v-model="contato.estado"
+          />
+        </b-col>
+        <b-col>
+          <label for="configuracoes-contato-input-telefone">Telefone</label>
+          <input
+            type="text"
+            id="configuracoes-contato-input-telefone"
+            v-model="contato.telefone"
           />
         </b-col>
       </b-row>
       <b-row>
         <b-col>
-          <label for="configuracoes-input-instagram">Instagram</label>
+          <label for="configuracoes-contato-input-whatsapp">WhatsApp</label>
           <input
             type="text"
-            id="configuracoes-input-instagram"
-            v-model="configs.instagram"
+            id="configuracoes-contato-input-whatsapp"
+            v-model="contato.whatsapp"
           />
         </b-col>
         <b-col>
-          <label for="configuracoes-input-linkedin">Linkedin</label>
+          <label for="configuracoes-contato-input-email">E-mail</label>
           <input
             type="text"
-            id="configuracoes-input-linkedin"
-            v-model="configs.linkedin"
+            id="configuracoes-contato-input-email"
+            v-model="contato.email"
           />
         </b-col>
         <b-col>
-          <label for="configuracoes-input-youtube">Youtube</label>
-          <input type="text" id="configuracoes-input-youtube" v-model="configs.youtube" />
+          <label for="configuracoes-contato-input-facebook">Facebook</label>
+          <input
+            type="text"
+            id="configuracoes-contato-input-facebook"
+            v-model="contato.facebook"
+          />
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <label for="configuracoes-contato-input-instagram">Instagram</label>
+          <input
+            type="text"
+            id="configuracoes-contato-input-instagram"
+            v-model="contato.instagram"
+          />
+        </b-col>
+        <b-col>
+          <label for="configuracoes-contato-input-linkedin">Linkedin</label>
+          <input
+            type="text"
+            id="configuracoes-contato-input-linkedin"
+            v-model="contato.linkedin"
+          />
+        </b-col>
+        <b-col>
+          <label for="configuracoes-contato-input-youtube">Youtube</label>
+          <input
+            type="text"
+            id="configuracoes-contato-input-youtube"
+            v-model="contato.youtube"
+          />
         </b-col>
       </b-row>
       <div class="mt-4">
         <div class="float-right">
-          <button class="btn-cancelar mr-2">Cancelar</button>
-          <button class="btn-salvar">Salvar</button>
+          <button class="btn-cancelar mr-2" @click="cancelarAlteracao('contato')">
+            Cancelar
+          </button>
+          <button class="btn-salvar" @click="salvarConfiguracao('contato')">
+            Salvar
+          </button>
         </div>
       </div>
     </b-container>
@@ -98,25 +124,50 @@
     <b-container id="configuracoes-contato-rodape" class="w-100 p-4 configuracoes-forms"
       ><b-row>
         <b-col>
-          <label for="configuracoes-input-rodape"><strong>Mostrar rodapé</strong></label>
-          <select>
+          <label for="configuracoes-rodape-input-rodape"
+            ><strong>Mostrar rodapé</strong></label
+          >
+          <select v-model="rodape.rodapeAtivo">
             <option value="true">Sim</option>
             <option value="false">Não</option>
           </select>
         </b-col>
         <b-col>
-          <label for="configuracoes-input-complemento">Cor fundo</label>
+          <label for="configuracoes-rodape-input-complemento">Cor fundo</label>
           <input
             type="text"
-            id="configuracoes-input-complemento"
-            v-model="configs.complemento"
+            id="configuracoes-rodape-input-complemento"
+            v-model="rodape.corFundo"
           />
+                <ColorPicker v-model="rodape.corFundo" />
+
         </b-col>
         <b-col>
-          <label for="configuracoes-input-bairro">Bairro</label>
-          <input type="text" id="configuracoes-input-bairro" v-model="configs.bairro" />
+          <label for="configuracoes-rodape-input-icones">Icones de redes sociais</label>
+          <select
+            id="configuracoes-rodape-input-icones"
+            v-model="rodape.iconesRedesSociais"
+          >
+            <option value="dark">Dark</option>
+            <option value="white">White</option>
+          </select>
         </b-col>
       </b-row>
+      <b-row class="w-25">
+        <b-col>
+          <label for="configuracoes-rodape-input-logo">Logo do rodapé</label>
+
+          <input type="file" id="configuracoes-rodape-input-logo" @change="getLogo" />
+        </b-col>
+      </b-row>
+      <div class="mt-4">
+        <div class="float-right">
+          <button class="btn-cancelar mr-2" @click="cancelarAlteracao('rodape')">
+            Cancelar
+          </button>
+          <button class="btn-salvar" @click="salvarConfiguracao('rodape')">Salvar</button>
+        </div>
+      </div>
     </b-container>
   </div>
 </template>
@@ -126,7 +177,9 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   data() {
     return {
-      configs: "",
+      rodape: "",
+      contato: "",
+      imgLogoFile: null,
     };
   },
   computed: {
@@ -136,17 +189,46 @@ export default {
   },
   watch: {
     configuracoes: function (newVal, oldVal) {
-      console.log("newVal");
-      console.log(newVal);
       if (newVal != null) {
-        this.configs = Object.assign({}, newVal);
+        this.contato = Object.assign({}, newVal.contato);
+        this.rodape = Object.assign({}, newVal.rodape);
       }
     },
   },
   methods: {
     ...mapActions({
-      getConfiguracoes: "configuracoes/getConfiguracoes", //also supports payload `this.nameOfAction(amount)`
+      getConfiguracoes: "configuracoes/getConfiguracoes",
+      putRodape: "configuracoes/putRodape",
+      putContato: "configuracoes/putContato",
     }),
+    salvarConfiguracao(formsSelecionado) {
+      if (formsSelecionado == "contato") {
+        if (this.contato == this.configuracoes.contato) {
+          return;
+        }
+        this.putContato({ contato: this.contato });
+      }
+      if (formsSelecionado == "rodape") {
+        console.log(this.configuracoes.rodape);
+        console.log(this.rodape);
+        if (this.rodape == this.configuracoes.rodape) {
+          return;
+        }
+        this.putRodape({ rodape: this.rodape, file: this.imgLogoFile });
+      }
+    },
+    getLogo(img) {
+      console.log(img.target.files[0]);
+      this.imgLogoFile = img.target.files[0];
+    },
+    cancelarAlteracao(formsSelecionado) {
+      if (formsSelecionado == "contato") {
+        this.contato = Object.assign({}, this.configuracoes.contato);
+      }
+      if (formsSelecionado == "rodape") {
+        this.rodape = Object.assign({}, this.configuracoes.rodape);
+      }
+    },
   },
 
   created() {
@@ -171,6 +253,13 @@ export default {
   border-top: none;
   border-left: none;
   border-right: none;
+}
+.configuracoes-forms select {
+  border-bottom: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: rgb(243, 237, 237);
 }
 .configuracoes-forms input:focus {
   outline: none;

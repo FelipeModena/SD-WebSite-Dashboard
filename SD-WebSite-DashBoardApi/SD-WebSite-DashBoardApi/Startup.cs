@@ -57,6 +57,7 @@ namespace SD_WebSite_DashBoardApi
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             services.AddScoped<IConfiguracaoBusiness, ConfiguracaoBusiness>();
+            services.AddScoped<IConfiguracaoRepository, ConfiguracaoRepository>();
 
             services.AddScoped<IAdminstradorBusiness, AdministradorBusiness>();
             services.AddScoped<IAdministradorRepository, AdmistradorRepository>();

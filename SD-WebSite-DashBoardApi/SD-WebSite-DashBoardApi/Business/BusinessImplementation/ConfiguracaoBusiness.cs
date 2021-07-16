@@ -1,4 +1,6 @@
-﻿using SD_WebSite_DashBoardApi.Repository;
+﻿using SD_WebSite_DashBoardApi.Data;
+using SD_WebSite_DashBoardApi.Models;
+using SD_WebSite_DashBoardApi.Repository;
 using System;
 
 namespace SD_WebSite_DashBoardApi.Business.BusinessImplementation
@@ -19,12 +21,17 @@ namespace SD_WebSite_DashBoardApi.Business.BusinessImplementation
 
         public object FindLast()
         {
-           return configuracaoRepository.FindLast();
+            
+            return configuracaoRepository.FindLast();
         }
 
-        public object Update(RodapeContatoVO configuracao)
+        public object UpdateRodape(Rodape rodape)
         {
-            return configuracaoRepository.GetByDate(configuracao);
+            return configuracaoRepository.UpdateRodape(rodape);
+        }
+        public object UpdateContato(Contato contato)
+        {
+            return configuracaoRepository.UpdateContato(contato);
         }
     }
 }

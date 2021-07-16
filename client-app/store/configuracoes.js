@@ -12,16 +12,47 @@ export const actions = {
     async getConfiguracoes({ commit }) {
         return this.$axios.get("api/Administrador/getConfiguracoes")
             .then((response) => {
-                commit('SET_CONFIGURACOES', response.data[0]);
+                commit('SET_CONFIGURACOES', response.data);
             })
             .catch(err => {
                 console.log(err);
             });
     },
+    async putRodape({ commit }, config) {
+        if (config.file != null) {
+            await this.$axios.post("api/Imagem/PostImage",config.file)
+            .then(reponse=>{
+                console.log(response);
+            })
+            .catch(error=>{
+                console.log(error);
+            })
+
+        }
+        this.$axios.put("api/Administrador/configureRodape", config.rodape)
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    },
+    putContato({ commit }, config) {
+        this.$axios.put("api/Administrador/configureContato", config.contato)
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
 }
 
 export const mutations = {
     SET_CONFIGURACOES(state, configuracoes) {
-        state.configuracoes = configuracoes;
+        state.configuracoes = {};
+        state.configuracoes.contato = configuracoes.contato;
+        state.configuracoes.rodape = configuracoes.rodape;
     },
 }

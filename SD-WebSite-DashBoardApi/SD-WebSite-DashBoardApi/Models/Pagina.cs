@@ -16,6 +16,8 @@ namespace SD_WebSite_DashBoardApi.Models
         public int Ordem { get; set; }
         [Column("ativa")]
         public bool Ativa { get; set; }
+        [Column("url")]
+        public string Url { get; set; }
         [Column("componente")]
         public virtual List<Componente> Componente { get; set; }
         [Column("modificacao")]
