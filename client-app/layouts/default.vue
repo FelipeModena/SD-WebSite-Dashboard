@@ -20,14 +20,14 @@
         <div
           v-for="(opcao, index) in opcoes"
           :key="index"
-          class="px-3 py-5 text-center"
+          class="px-1 py-5 text-center"
           @click="rotaMenu(opcao.rota, index)"
           :id="'side-menu-opcao-default-' + index"
         >
           <img v-if="index == 0" src="~/assets/icones/icone-menu.svg" alt="" />
           <img v-if="index == 1" src="~/assets/icones/icone-paginas.svg" alt="" />
           <img v-if="index == 2" src="~/assets/icones/configuracoes.png" alt="" />
-          <h5>{{ opcao.titulo }}</h5>
+          <p><strong>{{ opcao.titulo }}</strong></p>
         </div>
       </div>
       <Nuxt />
@@ -70,11 +70,10 @@ export default {
     },
     rotaMenu(rota, index) {
       console.log(index);
-      console.log(this.opcoes.length);
       for (let i = 0; i < this.opcoes.length; i++) {
         $("#side-menu-opcao-default-" + i).css({ background: "#c3c3c3" });
         }
-          $("#side-menu-opcao-default-" + index).css({ background: "green" });
+          $("#side-menu-opcao-default-" + index).css({ background: "#a9a9b5" });
           this.$router.push(rota);
           return;
     },
