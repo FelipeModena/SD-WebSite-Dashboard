@@ -8,10 +8,12 @@ namespace SD_WebSite_DashBoardApi.Business.BusinessImplementation
     public class PaginaBusiness : IPaginaBusiness
     {
         private readonly IPaginaRepository paginaRepository;
+        private readonly IGenericRepository<Pagina> _genericRepository;
 
-        public PaginaBusiness( IPaginaRepository paginaRepository = null)
+        public PaginaBusiness(IPaginaRepository paginaRepository = null, IGenericRepository<Pagina> genericRepository = null)
         {
             this.paginaRepository = paginaRepository;
+            _genericRepository = genericRepository;
         }
 
 
@@ -20,11 +22,22 @@ namespace SD_WebSite_DashBoardApi.Business.BusinessImplementation
             return paginaRepository.FindAllPagesAndComponents();
         }
 
+        public object UpdatePage(Pagina pagina)
+        {
+            Pagina page = _genericRepository.Update(pagina);
+            if (page!=null)
+            {
+                return "Pagina " + page.NomePagina + " atualizada";
+            }
+            return _genericRepository.Update(pagina);
+        }
 
         public object UpdatePages(List<Pagina> paginas)
         {
             
             return paginaRepository.UpdatePages(paginas);
         }
+
+
     }
 }

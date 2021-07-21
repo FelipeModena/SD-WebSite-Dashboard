@@ -7,5 +7,6 @@ namespace SD_WebSite_DashBoardApi.Business
     {
         object FindAllPagesAndComponents();
         object UpdatePages(List<Pagina> paginas);
+        object UpdatePage(Pagina pagina);
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using SD_WebSite_DashBoardApi.Business;
 using SD_WebSite_DashBoardApi.Models;
+using SD_WebSite_DashBoardApi.Repositorio.Generic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,12 @@ namespace SD_WebSite_DashBoardApi.Controllers
             }
             return (pagina);
         }
+        [HttpPut("updatePagina")]
+        public IActionResult UpdatePagina([FromBody] Pagina pagina)
+        {
+            return Ok(_paginaBusiness.UpdatePage(pagina));
 
+        }
 
         [HttpPut ("updatePaginas")]
         public IActionResult UpdatePaginas([FromBody] List<Pagina> paginas)

@@ -17,12 +17,18 @@ namespace SD_WebSite_DashBoardApi.Models
         [Column("pagina_id")]
         public long  PaginaId { get; set; }
         public virtual Pagina Pagina { get; set; }
-        [Column("url_imagem")]
-        public string UrlImagem { get; set; }
+        [Column("url_imagem_web")]
+        public string UrlImagemWeb { get; set; }
+        [Column("url_imagem_mobile")]
+        public string UrlImagemMobile { get; set; }
+        [Column("ativo")]
+        public bool Ativo { get; set; }
         [Column("titulo")]
         public string Titulo { get; set; }
         [Column("cor_titulo")]
         public string CorTitulo { get; set; }
+        [Column("cor_fundo")]
+        public string CorFundo { get; set; }
         [Column("sub_titulo")]
         public string SubTitulo { get; set; }
         [Column("cor_sub_titulo")]
