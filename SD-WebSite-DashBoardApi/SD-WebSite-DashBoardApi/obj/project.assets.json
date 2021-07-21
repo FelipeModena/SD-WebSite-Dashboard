@@ -1231,25 +1231,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Usuario\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\felip\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitRepositorio\\SD-WebSite-Dashboard\\SD-WebSite-DashBoardApi\\SD-WebSite-DashBoardApi\\SD-WebSite-DashBoardApi.csproj",
+      "projectUniqueName": "D:\\GitRepositories\\SD-WebSite-Dashboard\\SD-WebSite-DashBoardApi\\SD-WebSite-DashBoardApi\\SD-WebSite-DashBoardApi.csproj",
       "projectName": "SD-WebSite-DashBoardApi",
-      "projectPath": "D:\\GitRepositorio\\SD-WebSite-Dashboard\\SD-WebSite-DashBoardApi\\SD-WebSite-DashBoardApi\\SD-WebSite-DashBoardApi.csproj",
-      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "D:\\GitRepositorio\\SD-WebSite-Dashboard\\SD-WebSite-DashBoardApi\\SD-WebSite-DashBoardApi\\obj\\",
+      "projectPath": "D:\\GitRepositories\\SD-WebSite-Dashboard\\SD-WebSite-DashBoardApi\\SD-WebSite-DashBoardApi\\SD-WebSite-DashBoardApi.csproj",
+      "packagesPath": "C:\\Users\\felip\\.nuget\\packages\\",
+      "outputPath": "D:\\GitRepositories\\SD-WebSite-Dashboard\\SD-WebSite-DashBoardApi\\SD-WebSite-DashBoardApi\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\felip\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
