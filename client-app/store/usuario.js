@@ -12,7 +12,7 @@ export const getters = {
 export const actions = {
     async Login({},user){
         this.$axios
-        .get("api/administrador/login", {
+        .get("administrador/login", {
           params: {
             user:user.username,
             password: user.password,
@@ -23,6 +23,7 @@ export const actions = {
           if (response.status == 200) {
             localStorage.setItem('adminId',response.data.id);
             this.$router.push("painel");
+            alert("Bem vindo "+ response.data);
           }
         })
         .catch((error) => {

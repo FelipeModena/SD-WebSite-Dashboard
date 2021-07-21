@@ -1,8 +1,8 @@
 <template>
     <div class="container color-picker-layout m-0">
         <div class="row">
-            <div class="col-sm-auto p-0">
-                <input type="text" :value="value" id="hex" class="pt-0">
+            <div class="col-sm-auto p-0 w-100">
+                <input type="text" :value="value"  class="pt-0 hex">
                 <label :for="colorPicker + value" class="m-0"><img src="~/assets/icones/eye-dropper-solid.svg" alt="conta-gotas" class="eye-dropper">
                     <input type="color" :id="colorPicker + value" :value="value" v-on:input="$emit('input', $event.target.value)">
                 </label>
@@ -32,7 +32,7 @@ export default {
         width: auto;
     }
 
-    #hex {
+    .hex {
         padding: 0px;
         width: 80%;
         border-top: 0px;

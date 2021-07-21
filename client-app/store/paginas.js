@@ -10,32 +10,26 @@ export const getters = {
 }
 
 export const actions = {
-    getPaginas({ dispatch }) {
-        return this.$axios.get("api/paginas/GetAllPagesAndComponents")
+    getPaginas({ commit }) {
+
+        return this.$axios.get("paginas/GetAllPagesAndComponents")
             .then((response) => {
-                dispatch('attempt', response.data);
+                if(response.data){
+                    response.data.sort(function (pag1, pag2) {
+                        return pag1.ordem - pag2.ordem;
+                    })
+            commit('SET_PAGINAS', response.data);
+                }
             })
             .catch(err => {
-                dispatch('failed', err);
+                console.log("paginas.js: " + err);
             });
     },
-    attempt({ commit }, paginas) {
-        if (paginas) {
-            paginas.sort(function (pag1, pag2) {
-                return pag1.ordem - pag2.ordem;
-            })
-            commit('SET_PAGINAS', paginas);
-        }
-    },
-    failed(_, err) {
-        console.log("paginas.js: " + err);
-    },
-
     salvarAlteracoes({ state }) {
         state.paginas.forEach(pagina => {
             console.log(pagina.ordem);
         });
-        return this.$axios.put("api/Paginas/updatePaginas", state.paginas)
+        return this.$axios.put("Paginas/updatePaginas", state.paginas)
             .then(response => {
                 console.log(response);
             })

@@ -3,6 +3,31 @@
 
 }
 
+.cinza-claro{
+    background-color: #e6e6e6;
+}
+
+.mouse-hover-icone-select:hover{
+    cursor: pointer;
+}
+
+.configuracoes-forms input {
+    border-bottom: thin 2px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  .configuracoes-forms select {
+    border-bottom: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: rgb(243, 237, 237);
+  }
+  .configuracoes-forms input:focus {
+    outline: none;
+  }
+
 .btn-salvar{
     background: rgb(6, 158, 6);
 color: white;
