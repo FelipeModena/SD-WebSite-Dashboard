@@ -33,15 +33,10 @@
           </div>
 
           <b-collapse :id="'collapse-paginas-' + item.id" class="mt-2 text-left">
-            <div class="my-3" v-for="(componente, index) in item.componente" :key="index">
-              <p class="card-text">{{ componente.titulo }}</p>
-              <div class="d-flex">
-                <b-button
-                  size="w-100"
-                  @click="abreColapse('collapse-componentes-' + item.id)"
-                  >{{ componente.tipoComponente }}</b-button
-                >
-                <b-form-checkbox :state="true" name="check-button" switch>
+            <div class="my-3 bg-primary p-1" v-for="(componente, index) in item.componente" :key="index">
+              <p class="card-text">{{ componente.tipoComponente }}</p>
+              <div class="d-flex ">
+                <b-form-checkbox :checked="'' + componente.ativa" name="check-button" switch>
                 </b-form-checkbox>
               </div>
             </div>
