@@ -42,9 +42,17 @@ namespace SD_WebSite_DashBoardApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("tinyint(1)")
+                        .HasColumnName("ativo");
+
                     b.Property<string>("CorBotao1")
                         .HasColumnType("longtext")
                         .HasColumnName("cor_botao_1");
+
+                    b.Property<string>("CorFundo")
+                        .HasColumnType("longtext")
+                        .HasColumnName("cor_fundo");
 
                     b.Property<string>("CorSubTitulo")
                         .HasColumnType("longtext")
@@ -86,9 +94,13 @@ namespace SD_WebSite_DashBoardApi.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("url_direcionamento_paginas");
 
-                    b.Property<string>("UrlImagem")
+                    b.Property<string>("UrlImagemMobile")
                         .HasColumnType("longtext")
-                        .HasColumnName("url_imagem");
+                        .HasColumnName("url_imagem_mobile");
+
+                    b.Property<string>("UrlImagemWeb")
+                        .HasColumnType("longtext")
+                        .HasColumnName("url_imagem_web");
 
                     b.HasKey("Id");
 
