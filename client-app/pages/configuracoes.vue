@@ -1,7 +1,7 @@
 <template>
   <div class="py-3 px-4 w-100">
     <h3><strong>Configurações de contato</strong></h3>
-    <b-container id="configuracoes-contato" class="w-100 p-4 configuracoes-forms">
+    <b-container id="configuracoes-contato" class="w-100 p-4 configuracoes-forms configuracoes-forms-formatacao">
       <b-row>
         <b-col>
           <label for="configuracoes-contato-input-endereco"
@@ -121,7 +121,7 @@
     </b-container>
 
     <h3 class="mt-4"><strong>Configurações do rodapé</strong></h3>
-    <b-container id="configuracoes-contato-rodape" class="w-100 p-4 configuracoes-forms"
+    <b-container id="configuracoes-contato-rodape" class="w-100 p-4 configuracoes-forms configuracoes-forms-formatacao" 
       ><b-row>
         <b-col>
           <label for="configuracoes-rodape-input-rodape"
@@ -134,12 +134,8 @@
         </b-col>
         <b-col>
           <label for="configuracoes-rodape-input-complemento">Cor fundo</label>
-          <input
-            type="text"
-            id="configuracoes-rodape-input-complemento"
-            v-model="rodape.corFundo"
-          />
-                <ColorPicker v-model="rodape.corFundo" />
+
+                <ColorPicker  v-model="rodape.corFundo" id="configuracoes-rodape-input-complemento" />
 
         </b-col>
         <b-col>
@@ -193,6 +189,9 @@ export default {
         this.contato = Object.assign({}, newVal.contato);
         this.rodape = Object.assign({}, newVal.rodape);
       }
+      console.log(newVal);
+      console.log(this.rodape);
+      console.log(this.contato);
     },
   },
   methods: {
@@ -237,31 +236,17 @@ export default {
 };
 </script>
 <style>
-.configuracoes-forms {
+.configuracoes-forms-formatacao {
   background: white;
   display: grid;
 }
-.configuracoes-forms .col {
+.configuracoes-forms-formatacao .col {
   display: grid;
 }
-.configuracoes-forms label {
+.configuracoes-forms-formatacao label {
   margin: 22px 5px 2px 5px;
 }
 
-.configuracoes-forms input {
-  border-bottom: thin 2px;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-}
-.configuracoes-forms select {
-  border-bottom: none;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  background: rgb(243, 237, 237);
-}
-.configuracoes-forms input:focus {
-  outline: none;
-}
+
+
 </style>
