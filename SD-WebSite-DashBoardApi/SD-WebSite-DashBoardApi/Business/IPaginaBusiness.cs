@@ -5,7 +5,7 @@ namespace SD_WebSite_DashBoardApi.Business
 {
     public interface IPaginaBusiness
     {
-        object FindAllPagesAndComponents();
+        object FindAllPagesAndComponents(int idAdmin);
         object UpdatePages(List<Pagina> paginas);
         object UpdatePage(Pagina pagina);
     }
