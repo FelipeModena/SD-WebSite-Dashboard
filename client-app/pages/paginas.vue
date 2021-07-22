@@ -15,13 +15,13 @@
         <div v-for="(pag, index) in paginasC" :key="index">
           <b-row>
             <b-col
-              class="mouse-hover-icone-select"
+              class="mouse-hover-icone-select hover-primario"
               @click="abreColapse('collapse-componentes-' + pag.nomePagina)"
               ><strong
                 ><p>{{ pag.nomePagina }}</p></strong
               >
             </b-col>
-            <b-col>{{ pag.url }}</b-col>
+            <b-col  ><p>{{ pag.url }}</p></b-col>
             <b-col class="d-flex">
               <img
                 width="18px"
@@ -54,8 +54,8 @@
                   <p>Ação</p>
                 </b-col>
               </b-row>
-              <b-row v-for="(componente, compI) in pag.componente" :key="compI">
-                <b-col>
+              <b-row v-for="(componente, compI) in pag.componente" :key="compI" class="  hover-secundario">
+                <b-col >
                   <p>{{ componente.tipoComponente }}</p>
                 </b-col>
                 <b-col>
@@ -148,6 +148,7 @@ export default {
       this.$bvModal.hide("modal-pagina-altera");
     },
     editarComponente(pagina,componente){
+      console.log(componente);
       this.$refs.modalComponentes.getCompoenenteEPaginaId(pagina.nomePagina,componente);
     }
   },

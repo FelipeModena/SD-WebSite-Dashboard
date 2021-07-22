@@ -11,8 +11,12 @@ export const getters = {
 
 export const actions = {
     getPaginas({ commit }) {
-
-        return this.$axios.get("paginas/GetAllPagesAndComponents")
+        let config = {
+            params:{
+                idAdmin:1
+            }
+        }
+        return this.$axios.get('paginas/GetAllPagesAndComponents', config)
             .then((response) => {
                 if(response.data){
                     response.data.sort(function (pag1, pag2) {
@@ -26,9 +30,6 @@ export const actions = {
             });
     },
     salvarAlteracoes({ state }) {
-        state.paginas.forEach(pagina => {
-            console.log(pagina.ordem);
-        });
         return this.$axios.put("Paginas/updatePaginas", state.paginas)
             .then(response => {
                 console.log(response);

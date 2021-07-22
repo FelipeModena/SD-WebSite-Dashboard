@@ -55,3 +55,23 @@ padding: 8px 15px;
 background: rgb(0, 83, 0);
     transition: 0.2s;
 }
+
+.hover-primario:hover{
+    background: rgb(241, 235, 235);
+}
+
+.hover-secundario:hover{
+    background: rgb(221, 221, 221);
+
+}
+
+.hover-secundario,.hover-primario{
+    transition: 0.3s;
+
+}
+
+.hover-secundario:hover,.hover-primario:hover{
+    transition: 0.3s;
+    font-style: italic;
+
+}
