@@ -10,6 +10,8 @@ namespace SD_WebSite_DashBoardApi.Models
     [Table("contato")]
     public class Contato : BaseEntity
     {
+        [Column("administrador")]
+        public Administrador Administrador { get; set; }
         [Column("endereco")]
         public string Endereco { get; set; }
         [Column("cidade")]

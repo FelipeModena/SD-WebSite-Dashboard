@@ -5,7 +5,7 @@ namespace SD_WebSite_DashBoardApi.Repository
 {
     public interface IPaginaRepository
     {
-        object FindAllPagesAndComponents();
+        object FindAllPagesAndComponents(int idAdmin);
         object UpdatePages(List<Pagina> paginas);
     }
 }

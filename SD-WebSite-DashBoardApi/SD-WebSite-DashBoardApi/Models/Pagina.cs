@@ -10,6 +10,8 @@ namespace SD_WebSite_DashBoardApi.Models
     [Table("pagina")]
     public class Pagina:BaseEntity
     {
+        [Column("administrador")]
+        public Administrador Administrador { get; set; }
         [Column("nome_pagina")]
         public string NomePagina { get; set; }
         [Column("ordem")]

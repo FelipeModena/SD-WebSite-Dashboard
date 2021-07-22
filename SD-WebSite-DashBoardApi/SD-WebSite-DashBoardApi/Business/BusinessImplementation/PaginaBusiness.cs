@@ -17,9 +17,9 @@ namespace SD_WebSite_DashBoardApi.Business.BusinessImplementation
         }
 
 
-        public object FindAllPagesAndComponents()
+        public object FindAllPagesAndComponents(int idAdmin)
         {
-            return paginaRepository.FindAllPagesAndComponents();
+            return paginaRepository.FindAllPagesAndComponents(idAdmin);
         }
 
         public object UpdatePage(Pagina pagina)

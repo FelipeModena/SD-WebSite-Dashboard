@@ -12,15 +12,8 @@ namespace SD_WebSite_DashBoardApi.Models
     {
         [Column("tipo_componente")]
         public string TipoComponente { get; set; }
-        //[Column("adminstrador_id")]
-        //public virtual List<Administrador> AdministradorId { get; set; }
-        [Column("pagina_id")]
-        public long  PaginaId { get; set; }
+        public virtual List<Imagem> Imagens { get; set; } 
         public virtual Pagina Pagina { get; set; }
-        [Column("url_imagem_web")]
-        public string UrlImagemWeb { get; set; }
-        [Column("url_imagem_mobile")]
-        public string UrlImagemMobile { get; set; }
         [Column("ativo")]
         public bool Ativo { get; set; }
         [Column("titulo")]

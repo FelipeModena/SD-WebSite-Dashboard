@@ -14,5 +14,11 @@ namespace SD_WebSite_DashBoardApi.Models
         public string Usuario { get; set; }
         [Column("password")]
         public string Password { get; set; }
+        [Column("url_site")]
+        public string UrlSite { get; set; }
+        [Column("modelo_site")]
+        public string ModeloSite { get; set; }
+        public virtual List<Pagina> Pagina { get; set; }
+
     }
 }

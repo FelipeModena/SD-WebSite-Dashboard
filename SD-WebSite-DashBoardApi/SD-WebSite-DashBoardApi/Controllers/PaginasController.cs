@@ -22,11 +22,10 @@ namespace SD_WebSite_DashBoardApi.Controllers
         }
 
 
-
-        [HttpGet ("GetAllPagesAndComponents")]
-        public IActionResult GetAllPagesAndComponents()
+        [HttpGet("GetAllPagesAndComponents")]
+        public IActionResult GetAllPagesAndComponents( int idAdmin)
         {
-            var pagina = Ok(_paginaBusiness.FindAllPagesAndComponents());
+            var pagina = Ok(_paginaBusiness.FindAllPagesAndComponents(idAdmin));
             if (pagina == null)
             {
                 return Ok("vazia");
@@ -40,7 +39,7 @@ namespace SD_WebSite_DashBoardApi.Controllers
 
         }
 
-        [HttpPut ("updatePaginas")]
+        [HttpPut("updatePaginas")]
         public IActionResult UpdatePaginas([FromBody] List<Pagina> paginas)
         {
             if (paginas == null)
