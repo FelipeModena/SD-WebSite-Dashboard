@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SD_WebSite_DashBoardApi.Models.Context;
 
 namespace SD_WebSite_DashBoardApi.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210721163123_adminFk")]
+    partial class adminFk
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,17 +25,9 @@ namespace SD_WebSite_DashBoardApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("ModeloSite")
-                        .HasColumnType("longtext")
-                        .HasColumnName("modelo_site");
-
                     b.Property<string>("Password")
                         .HasColumnType("longtext")
                         .HasColumnName("password");
-
-                    b.Property<string>("UrlSite")
-                        .HasColumnType("longtext")
-                        .HasColumnName("url_site");
 
                     b.Property<string>("Usuario")
                         .HasColumnType("longtext")
@@ -70,8 +64,9 @@ namespace SD_WebSite_DashBoardApi.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("cor_titulo");
 
-                    b.Property<long?>("PaginaId")
-                        .HasColumnType("bigint");
+                    b.Property<long>("PaginaId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("pagina_id");
 
                     b.Property<string>("SubTitulo")
                         .HasColumnType("longtext")
@@ -101,6 +96,14 @@ namespace SD_WebSite_DashBoardApi.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("url_direcionamento_paginas");
 
+                    b.Property<string>("UrlImagemMobile")
+                        .HasColumnType("longtext")
+                        .HasColumnName("url_imagem_mobile");
+
+                    b.Property<string>("UrlImagemWeb")
+                        .HasColumnType("longtext")
+                        .HasColumnName("url_imagem_web");
+
                     b.HasKey("Id");
 
                     b.HasIndex("PaginaId");
@@ -112,9 +115,6 @@ namespace SD_WebSite_DashBoardApi.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("AdministradorId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Bairro")
@@ -171,41 +171,7 @@ namespace SD_WebSite_DashBoardApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AdministradorId");
-
                     b.ToTable("contato");
-                });
-
-            modelBuilder.Entity("SD_WebSite_DashBoardApi.Models.Imagem", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Compatibilidade")
-                        .HasColumnType("longtext")
-                        .HasColumnName("compatibilidade");
-
-                    b.Property<long?>("ComponenteId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("ImgUrl")
-                        .HasColumnType("longtext")
-                        .HasColumnName("img_url");
-
-                    b.Property<int>("Ordenacao")
-                        .HasColumnType("int")
-                        .HasColumnName("ordenacao");
-
-                    b.Property<string>("Texto")
-                        .HasColumnType("longtext")
-                        .HasColumnName("texto");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ComponenteId");
-
-                    b.ToTable("Imagem");
                 });
 
             modelBuilder.Entity("SD_WebSite_DashBoardApi.Models.Log", b =>
@@ -302,46 +268,20 @@ namespace SD_WebSite_DashBoardApi.Migrations
                 {
                     b.HasOne("SD_WebSite_DashBoardApi.Models.Pagina", "Pagina")
                         .WithMany("Componente")
-                        .HasForeignKey("PaginaId");
+                        .HasForeignKey("PaginaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Pagina");
                 });
 
-            modelBuilder.Entity("SD_WebSite_DashBoardApi.Models.Contato", b =>
+            modelBuilder.Entity("SD_WebSite_DashBoardApi.Models.Pagina", b =>
                 {
                     b.HasOne("SD_WebSite_DashBoardApi.Models.Administrador", "Administrador")
                         .WithMany()
                         .HasForeignKey("AdministradorId");
 
                     b.Navigation("Administrador");
-                });
-
-            modelBuilder.Entity("SD_WebSite_DashBoardApi.Models.Imagem", b =>
-                {
-                    b.HasOne("SD_WebSite_DashBoardApi.Models.Componente", "Componente")
-                        .WithMany("Imagens")
-                        .HasForeignKey("ComponenteId");
-
-                    b.Navigation("Componente");
-                });
-
-            modelBuilder.Entity("SD_WebSite_DashBoardApi.Models.Pagina", b =>
-                {
-                    b.HasOne("SD_WebSite_DashBoardApi.Models.Administrador", "Administrador")
-                        .WithMany("Pagina")
-                        .HasForeignKey("AdministradorId");
-
-                    b.Navigation("Administrador");
-                });
-
-            modelBuilder.Entity("SD_WebSite_DashBoardApi.Models.Administrador", b =>
-                {
-                    b.Navigation("Pagina");
-                });
-
-            modelBuilder.Entity("SD_WebSite_DashBoardApi.Models.Componente", b =>
-                {
-                    b.Navigation("Imagens");
                 });
 
             modelBuilder.Entity("SD_WebSite_DashBoardApi.Models.Pagina", b =>

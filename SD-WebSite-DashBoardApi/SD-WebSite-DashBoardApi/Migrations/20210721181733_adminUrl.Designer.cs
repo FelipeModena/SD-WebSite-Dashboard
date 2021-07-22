@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SD_WebSite_DashBoardApi.Models.Context;
 
 namespace SD_WebSite_DashBoardApi.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210721181733_adminUrl")]
+    partial class adminUrl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -193,13 +195,9 @@ namespace SD_WebSite_DashBoardApi.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("img_url");
 
-                    b.Property<int>("Ordenacao")
-                        .HasColumnType("int")
-                        .HasColumnName("ordenacao");
-
-                    b.Property<string>("Texto")
+                    b.Property<string>("RotaPagina")
                         .HasColumnType("longtext")
-                        .HasColumnName("texto");
+                        .HasColumnName("rota_pagina");
 
                     b.HasKey("Id");
 

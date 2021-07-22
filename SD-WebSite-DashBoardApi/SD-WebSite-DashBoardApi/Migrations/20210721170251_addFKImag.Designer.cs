@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SD_WebSite_DashBoardApi.Models.Context;
 
 namespace SD_WebSite_DashBoardApi.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210721170251_addFKImag")]
+    partial class addFKImag
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,17 +25,9 @@ namespace SD_WebSite_DashBoardApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("ModeloSite")
-                        .HasColumnType("longtext")
-                        .HasColumnName("modelo_site");
-
                     b.Property<string>("Password")
                         .HasColumnType("longtext")
                         .HasColumnName("password");
-
-                    b.Property<string>("UrlSite")
-                        .HasColumnType("longtext")
-                        .HasColumnName("url_site");
 
                     b.Property<string>("Usuario")
                         .HasColumnType("longtext")
@@ -100,6 +94,14 @@ namespace SD_WebSite_DashBoardApi.Migrations
                     b.Property<string>("UrlDirecionamentoPaginas")
                         .HasColumnType("longtext")
                         .HasColumnName("url_direcionamento_paginas");
+
+                    b.Property<string>("UrlImagemMobile")
+                        .HasColumnType("longtext")
+                        .HasColumnName("url_imagem_mobile");
+
+                    b.Property<string>("UrlImagemWeb")
+                        .HasColumnType("longtext")
+                        .HasColumnName("url_imagem_web");
 
                     b.HasKey("Id");
 
@@ -182,10 +184,6 @@ namespace SD_WebSite_DashBoardApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("Compatibilidade")
-                        .HasColumnType("longtext")
-                        .HasColumnName("compatibilidade");
-
                     b.Property<long?>("ComponenteId")
                         .HasColumnType("bigint");
 
@@ -193,13 +191,9 @@ namespace SD_WebSite_DashBoardApi.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("img_url");
 
-                    b.Property<int>("Ordenacao")
-                        .HasColumnType("int")
-                        .HasColumnName("ordenacao");
-
-                    b.Property<string>("Texto")
+                    b.Property<string>("RotaPagina")
                         .HasColumnType("longtext")
-                        .HasColumnName("texto");
+                        .HasColumnName("rota_pagina");
 
                     b.HasKey("Id");
 
