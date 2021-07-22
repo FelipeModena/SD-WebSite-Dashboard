@@ -2,6 +2,7 @@
 using SD_WebSite_DashBoardApi.Models;
 using SD_WebSite_DashBoardApi.Models.Context;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SD_WebSite_DashBoardApi.Repository.RepositoryImplementation
 {
@@ -16,9 +17,9 @@ namespace SD_WebSite_DashBoardApi.Repository.RepositoryImplementation
 
 
 
-        public object FindAllPagesAndComponents()
+        public object FindAllPagesAndComponents(int id)
         {
-            var paginas = _myDbContext.Pagina.Include(c=>c.Componente);
+            var paginas = _myDbContext.Pagina.Include(t2=> t2.Componente).ThenInclude(t3 => t3.Imagens).Where(p=>p.Administrador.Id ==id);
             return paginas;
         }
 
