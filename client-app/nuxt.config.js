@@ -26,7 +26,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/dnd-drag.js', mode: 'client' }
+    { src: '~/plugins/dnd-drag.js', mode: 'client' },
+    '~/plugins/url-api.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -46,7 +47,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseUrl: "https://localhost:44382/api/"
+    baseUrl: "https://localhost:44382/"
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
