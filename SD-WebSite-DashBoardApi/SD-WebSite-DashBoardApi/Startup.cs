@@ -57,9 +57,11 @@ namespace SD_WebSite_DashBoardApi
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             services.AddScoped<IComponenteBusiness, ComponenteBusiness>();
+            services.AddScoped<IComponenteRepository, ComponenteRepository>();
 
             services.AddScoped<IConfiguracaoBusiness, ConfiguracaoBusiness>();
             services.AddScoped<IConfiguracaoRepository, ConfiguracaoRepository>();
+
 
             services.AddScoped<IAdminstradorBusiness, AdministradorBusiness>();
             services.AddScoped<IAdministradorRepository, AdmistradorRepository>();
@@ -77,6 +79,8 @@ namespace SD_WebSite_DashBoardApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SD_WebSite_DashBoardApi v1"));
             }
+
+            app.UseStaticFiles();
 
             app.UseHttpsRedirection();
 
