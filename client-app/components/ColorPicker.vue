@@ -34,7 +34,7 @@ export default {
 
     .hex {
         padding: 0px;
-        width: 80%;
+        width: 93%;
         border-top: 0px;
         border-right: 0px;
         border-bottom: 1px solid black;

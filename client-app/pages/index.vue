@@ -11,8 +11,8 @@
       <input v-model="user" type="text" id="index-input-user" />
       <label for="index-input-senha">Senha</label>
       <input v-model="password" type="password" id="index-input-senha" />
-
       <button class="btn btn-success mt-5" @click="logar">Logar</button>
+    <span class="text-danger">Usuario nâo encontrado</span>
     </div>
   </div>
 </template>

@@ -85,6 +85,7 @@ export default {
     ...mapActions({
       getPaginas: "paginas/getPaginas",
       salvarAlteracoes: "paginas/salvarAlteracoes",
+      autenticatorUser:'usuario/AutenticatorUser'
     }),
     ...mapMutations({
       reorderPaginas: "paginas/REORDER_PAGINAS",
@@ -110,6 +111,7 @@ export default {
   },
   created() {
     this.getPaginas();
+    this.autenticatorUser();
   },
 };
 </script>

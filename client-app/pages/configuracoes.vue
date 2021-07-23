@@ -1,7 +1,10 @@
 <template>
   <div class="py-3 px-4 w-100">
     <h3><strong>Configurações de contato</strong></h3>
-    <b-container id="configuracoes-contato" class="w-100 p-4 configuracoes-forms configuracoes-forms-formatacao">
+    <b-container
+      id="configuracoes-contato"
+      class="w-100 p-4 configuracoes-forms configuracoes-forms-formatacao"
+    >
       <b-row>
         <b-col>
           <label for="configuracoes-contato-input-endereco"
@@ -14,7 +17,9 @@
           />
         </b-col>
         <b-col>
-          <label for="configuracoes-contato-input-complemento">Complemento</label>
+          <label for="configuracoes-contato-input-complemento"
+            >Complemento</label
+          >
           <input
             type="text"
             id="configuracoes-contato-input-complemento"
@@ -110,7 +115,10 @@
       </b-row>
       <div class="mt-4">
         <div class="float-right">
-          <button class="btn-cancelar mr-2" @click="cancelarAlteracao('contato')">
+          <button
+            class="btn-cancelar mr-2"
+            @click="cancelarAlteracao('contato')"
+          >
             Cancelar
           </button>
           <button class="btn-salvar" @click="salvarConfiguracao('contato')">
@@ -121,7 +129,9 @@
     </b-container>
 
     <h3 class="mt-4"><strong>Configurações do rodapé</strong></h3>
-    <b-container id="configuracoes-contato-rodape" class="w-100 p-4 configuracoes-forms configuracoes-forms-formatacao" 
+    <b-container
+      id="configuracoes-contato-rodape"
+      class="w-100 p-4 configuracoes-forms configuracoes-forms-formatacao"
       ><b-row>
         <b-col>
           <label for="configuracoes-rodape-input-rodape"
@@ -135,11 +145,15 @@
         <b-col>
           <label for="configuracoes-rodape-input-complemento">Cor fundo</label>
 
-                <ColorPicker  v-model="rodape.corFundo" id="configuracoes-rodape-input-complemento" />
-
+          <ColorPicker
+            v-model="rodape.corFundo"
+            id="configuracoes-rodape-input-complemento"
+          />
         </b-col>
         <b-col>
-          <label for="configuracoes-rodape-input-icones">Icones de redes sociais</label>
+          <label for="configuracoes-rodape-input-icones"
+            >Icones de redes sociais</label
+          >
           <select
             id="configuracoes-rodape-input-icones"
             v-model="rodape.iconesRedesSociais"
@@ -153,15 +167,24 @@
         <b-col>
           <label for="configuracoes-rodape-input-logo">Logo do rodapé</label>
 
-          <input type="file" id="configuracoes-rodape-input-logo" @change="getLogo" />
+          <input type="file" id="configuracoes-rodape-input-logo" />
+          <span v-if="this.rodape.logo != null"
+            ><strong>Imagem selecionada</strong></span
+          >
+          <span v-else> <strong>Sem Conteudo</strong></span>
         </b-col>
       </b-row>
       <div class="mt-4">
         <div class="float-right">
-          <button class="btn-cancelar mr-2" @click="cancelarAlteracao('rodape')">
+          <button
+            class="btn-cancelar mr-2"
+            @click="cancelarAlteracao('rodape')"
+          >
             Cancelar
           </button>
-          <button class="btn-salvar" @click="salvarConfiguracao('rodape')">Salvar</button>
+          <button class="btn-salvar" @click="salvarConfiguracao('rodape')">
+            Salvar
+          </button>
         </div>
       </div>
     </b-container>
@@ -175,7 +198,6 @@ export default {
     return {
       rodape: "",
       contato: "",
-      imgLogoFile: null,
     };
   },
   computed: {
@@ -189,9 +211,6 @@ export default {
         this.contato = Object.assign({}, newVal.contato);
         this.rodape = Object.assign({}, newVal.rodape);
       }
-      console.log(newVal);
-      console.log(this.rodape);
-      console.log(this.contato);
     },
   },
   methods: {
@@ -199,6 +218,8 @@ export default {
       getConfiguracoes: "configuracoes/getConfiguracoes",
       putRodape: "configuracoes/putRodape",
       putContato: "configuracoes/putContato",
+      postImagem: "imagens/postImagem",
+      autenticatorUser: "usuario/AutenticatorUser",
     }),
     salvarConfiguracao(formsSelecionado) {
       if (formsSelecionado == "contato") {
@@ -208,18 +229,17 @@ export default {
         this.putContato({ contato: this.contato });
       }
       if (formsSelecionado == "rodape") {
-        console.log(this.configuracoes.rodape);
-        console.log(this.rodape);
         if (this.rodape == this.configuracoes.rodape) {
           return;
         }
+
+        this.postImagem(
+           $("#configuracoes-rodape-input-logo").prop("files"),
+        );
         this.putRodape({ rodape: this.rodape, file: this.imgLogoFile });
       }
     },
-    getLogo(img) {
-      console.log(img.target.files[0]);
-      this.imgLogoFile = img.target.files[0];
-    },
+
     cancelarAlteracao(formsSelecionado) {
       if (formsSelecionado == "contato") {
         this.contato = Object.assign({}, this.configuracoes.contato);
@@ -232,6 +252,7 @@ export default {
 
   created() {
     this.getConfiguracoes();
+    this.autenticatorUser();
   },
 };
 </script>
@@ -246,7 +267,4 @@ export default {
 .configuracoes-forms-formatacao label {
   margin: 22px 5px 2px 5px;
 }
-
-
-
 </style>

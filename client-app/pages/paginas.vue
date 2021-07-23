@@ -121,6 +121,7 @@ export default {
   methods: {
     ...mapActions({
       getPaginas: "paginas/getPaginas",
+      autenticatorUser:'usuario/AutenticatorUser'
     }),
     abreColapse(collapseSelecionado) {
       this.$root.$emit("bv::toggle::collapse", collapseSelecionado);
@@ -148,12 +149,12 @@ export default {
       this.$bvModal.hide("modal-pagina-altera");
     },
     editarComponente(pagina,componente){
-      console.log(componente);
       this.$refs.modalComponentes.getCompoenenteEPaginaId(pagina.nomePagina,componente);
     }
   },
   created() {
     this.getPaginas();
+    this.autenticatorUser();
   },
 };
 </script>
