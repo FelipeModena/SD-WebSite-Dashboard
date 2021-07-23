@@ -4,7 +4,7 @@ export const actions = {
         imgs.forEach(img => {
             imgDb.append('files', img);
         });
-        await this.$axios.post('Imagem/PostListImagens', imgDb, {
+        await this.$axios.post('api/Imagem/PostListImagens', imgDb, {
             headers: {
                 "Content-Type": "multipart/form-data",
             }

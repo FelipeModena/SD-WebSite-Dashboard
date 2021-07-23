@@ -12,7 +12,7 @@ export const getters = {
 export const actions = {
   async Login({ }, user) {
     this.$axios
-      .get("administrador/login", {
+      .get("api/administrador/login", {
         params: {
           user: user.username,
           password: user.password,
@@ -38,7 +38,7 @@ export const actions = {
       if (localStorage.getItem('adminId') != null) {
         //this.$router.push("/");
         let id = localStorage.getItem("adminId");
-        this.$axios.get("administrador",
+        this.$axios.get("api/administrador",
           {
             params: { id: id }
           })

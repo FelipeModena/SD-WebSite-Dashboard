@@ -137,7 +137,7 @@ export default {
     async modalFormUrl(save) {
       if (save == true) {
         await this.$axios
-          .put("Paginas/updatePagina", this.paginaAuxModal)
+          .put("api/Paginas/updatePagina", this.paginaAuxModal)
           .then((response) => {
             this.getPaginas();
             alert(response.data);

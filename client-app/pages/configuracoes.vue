@@ -232,10 +232,10 @@ export default {
         if (this.rodape == this.configuracoes.rodape) {
           return;
         }
-
-        this.postImagem(
-           $("#configuracoes-rodape-input-logo").prop("files"),
-        );
+        if (logoRodape.length != 0) {
+          this.rodape.logo = logoRodape[0].name;
+        }
+        this.postImagem(logoRodape);
         this.putRodape({ rodape: this.rodape, file: this.imgLogoFile });
       }
     },

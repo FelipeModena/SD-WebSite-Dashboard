@@ -16,12 +16,13 @@ export const actions = {
                 idAdmin: 1
             }
         }
-        return this.$axios.get('paginas/GetAllPagesAndComponents', config)
+        return this.$axios.get('api/paginas/GetAllPagesAndComponents', config)
             .then((response) => {
                 if (response.data) {
                     response.data.sort(function (pag1, pag2) {
                         return pag1.ordem - pag2.ordem;
                     })
+                    console.log("paginas com sucess");
                     commit('SET_PAGINAS', response.data);
                 }
             })
@@ -30,7 +31,7 @@ export const actions = {
             });
     },
     salvarAlteracoes({ state }) {
-        return this.$axios.put("Paginas/updatePaginas", state.paginas)
+        return this.$axios.put("api/Paginas/updatePaginas", state.paginas)
             .then(response => {
                 console.log(response);
             })
