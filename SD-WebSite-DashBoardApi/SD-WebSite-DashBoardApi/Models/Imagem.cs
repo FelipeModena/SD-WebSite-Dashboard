@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace SD_WebSite_DashBoardApi.Models
 {
+    [Table("imagem")]
     public class Imagem:BaseEntity
     {
         [Column ("componente")]
+        [ForeignKey("componente")]
         public Componente Componente{ get; set; }
         [Column ("img_url")]
        public string ImgUrl { get; set; }
