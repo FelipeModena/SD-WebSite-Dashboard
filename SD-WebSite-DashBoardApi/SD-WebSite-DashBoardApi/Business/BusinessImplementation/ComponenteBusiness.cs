@@ -1,5 +1,6 @@
 ﻿using SD_WebSite_DashBoardApi.Models;
 using SD_WebSite_DashBoardApi.Repositorio.Generic;
+using SD_WebSite_DashBoardApi.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +12,22 @@ namespace SD_WebSite_DashBoardApi.Business.BusinessImplementation
     {
         private readonly IGenericRepository<Componente> _genericRepository;
         private readonly IGenericRepository<Log> _logGeneric;
+        private readonly IComponenteRepository componenteRepository;
 
-        public ComponenteBusiness(IGenericRepository<Componente> genericRepository, IGenericRepository<Log> logGeneric)
+        public ComponenteBusiness(IGenericRepository<Componente> genericRepository, IGenericRepository<Log> logGeneric, IComponenteRepository componenteRepository)
         {
             _genericRepository = genericRepository;
             _logGeneric = logGeneric;
+            this.componenteRepository = componenteRepository;
         }
 
         public object UpdateComponente(Componente componente)
         {
             try
             {
-            _genericRepository.Update(componente);
-            return new {msg= "Componente " + componente.TipoComponente + " atualizado com sucesso" };
+               var algo= componenteRepository.Update(componente);
+
+            return new {msg= "Componente " + componente.TipoComponente + " atualizado com sucesso" ,imgs= algo };
             }
             catch (Exception e)
             {

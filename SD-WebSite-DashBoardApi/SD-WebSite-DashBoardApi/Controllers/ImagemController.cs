@@ -13,19 +13,37 @@ namespace SD_WebSite_DashBoardApi.Controllers
     [ApiController]
     public class ImagemController : ControllerBase
     {
-        public static IWebHostEnvironment webHostEnvironment;
-        [HttpPost("PostImage")]
-        public async Task<IActionResult> PostLogoAsync(IFormFile ufile)
+
+        [HttpPost("PostListImagens")]
+        public async Task<IActionResult> PostListImagens(List<IFormFile> files)
         {
+            List<string> nomeArquivos = new List<string>();
+            int arquivosSalvo = files.Count;
             try
             {
-                var fileName = Path.GetFileName(ufile.FileName);
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images", fileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                foreach (var file in files)
                 {
-                    await ufile.CopyToAsync(fileStream);
+                    if (Path.GetExtension(file.FileName) == ".jpg" ||
+                        Path.GetExtension(file.FileName) == ".png" ||
+                        Path.GetExtension(file.FileName) == ".jpeg" ||
+                        Path.GetExtension(file.FileName) == ".gif" ||
+                        Path.GetExtension(file.FileName) == ".png" ||
+                        Path.GetExtension(file.FileName) == ".svg"
+                        )
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images", fileName);
+                        if (System.IO.File.Exists(filePath) != true)
+                        {
+                            using (var fileStream = new FileStream(filePath, FileMode.Create))
+                            {
+                                await file.CopyToAsync(fileStream);
+                                arquivosSalvo--;
+                            }
+                        }
+                    }
                 }
-                return Ok("Imagem "+ufile.FileName+" salva");
+                return Ok(new {arquivosSalvos = arquivosSalvo });
             }
             catch (Exception)
             {

@@ -17,5 +17,6 @@ namespace SD_WebSite_DashBoardApi.Models.Context
         public DbSet<Rodape> Rodape {get;set;}
         public DbSet<Log> Log {get;set;}
         public DbSet<Contato> Contato {get;set; }
+        public DbSet<Imagem> Imagem {get;set; }
     }
 }
