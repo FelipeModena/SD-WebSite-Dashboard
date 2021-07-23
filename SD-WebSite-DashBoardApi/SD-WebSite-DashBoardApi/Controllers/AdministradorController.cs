@@ -23,8 +23,8 @@ namespace SD_WebSite_DashBoardApi.Controllers
             return Ok(_administradorBusiness.FindByUser(user,password));
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Get(long id)
+        [HttpGet]
+        public IActionResult Get( int id)
         {
             var administrador = _administradorBusiness.FindById(id);
             return Ok(administrador);
