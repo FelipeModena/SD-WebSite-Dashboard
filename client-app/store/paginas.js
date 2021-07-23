@@ -12,17 +12,17 @@ export const getters = {
 export const actions = {
     getPaginas({ commit }) {
         let config = {
-            params:{
-                idAdmin:1
+            params: {
+                idAdmin: 1
             }
         }
         return this.$axios.get('paginas/GetAllPagesAndComponents', config)
             .then((response) => {
-                if(response.data){
+                if (response.data) {
                     response.data.sort(function (pag1, pag2) {
                         return pag1.ordem - pag2.ordem;
                     })
-            commit('SET_PAGINAS', response.data);
+                    commit('SET_PAGINAS', response.data);
                 }
             })
             .catch(err => {
