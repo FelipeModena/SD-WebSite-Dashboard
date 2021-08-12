@@ -14,16 +14,17 @@ namespace SD_WebSite_DashBoardApi.Repository.RepositoryImplementation
             this.dbContext = dbContext;
         }
 
-        public object FindLast()
+        public object FindById(int id)
         {
 
             try
             {
-               
+
+                    var administrador = dbContext.Administrador.FirstOrDefault(admin=>admin.Id == id);
                 return new
                 {
-                    Contato = dbContext.Contato.OrderBy(c => c.Modificacao).Last(),
-                    Rodape = dbContext.Rodape.OrderBy(c => c.Modificacao).Last()
+                    Contato = dbContext.Contato.FirstOrDefault(contato => contato.Administrador== administrador),
+                    Rodape = dbContext.Rodape.FirstOrDefault(rodape => rodape.Administrador == administrador)
                 };
             }
             catch (Exception)

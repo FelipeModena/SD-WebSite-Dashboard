@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SD_WebSite_DashBoardApi.Business;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,6 +14,27 @@ namespace SD_WebSite_DashBoardApi.Controllers
     [ApiController]
     public class ImagemController : ControllerBase
     {
+        private readonly IImagemBusiness _imagensBusiness;
+
+        public ImagemController(IImagemBusiness imagensBusiness)
+        {
+            _imagensBusiness = imagensBusiness;
+        }
+
+
+        [HttpPost("DeleteListImagensId")]
+        public IActionResult DeleteListImagensId([FromBody] List<int> imagensId)
+        {
+            if (imagensId==null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                _imagensBusiness.DeleteImagens(imagensId);
+            return Ok(imagensId.Count());
+            }
+        }
 
         [HttpPost("PostListImagens")]
         public async Task<IActionResult> PostListImagens(List<IFormFile> files)

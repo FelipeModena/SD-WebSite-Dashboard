@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SD_WebSite_DashBoardApi.Models
 {
-    [Table ("adminstrador")]
+    [Table ("administrador")]
     public class Administrador:BaseEntity
     {
         [Column("usuario")]
@@ -17,8 +17,9 @@ namespace SD_WebSite_DashBoardApi.Models
         [Column("url_site")]
         public string UrlSite { get; set; }
         [Column("modelo_site")]
-        public string ModeloSite { get; set; }
+        public int ModeloSite { get; set; }
+        [Column("cadastro")]
+        public DateTime Cadastro { get; set; }
         public virtual List<Pagina> Pagina { get; set; }
-
     }
 }

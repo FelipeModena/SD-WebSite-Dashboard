@@ -62,12 +62,16 @@ namespace SD_WebSite_DashBoardApi
             services.AddScoped<IConfiguracaoBusiness, ConfiguracaoBusiness>();
             services.AddScoped<IConfiguracaoRepository, ConfiguracaoRepository>();
 
+            services.AddScoped<IRootBusiness, RootBusiness>();
+            services.AddScoped<IRootRepository, RootRespository>();
 
             services.AddScoped<IAdminstradorBusiness, AdministradorBusiness>();
             services.AddScoped<IAdministradorRepository, AdmistradorRepository>();
 
             services.AddScoped<IPaginaBusiness, PaginaBusiness>();
             services.AddScoped<IPaginaRepository, PaginaRepository>();
+           
+            services.AddScoped<IImagemBusiness, ImagemBusiness>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

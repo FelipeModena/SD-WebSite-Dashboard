@@ -1,4 +1,5 @@
 ﻿using SD_WebSite_DashBoardApi.Models;
+using SD_WebSite_DashBoardApi.Repositorio.Generic;
 using SD_WebSite_DashBoardApi.Repository;
 using System;
 
@@ -7,7 +8,7 @@ namespace SD_WebSite_DashBoardApi.Business.BusinessImplementation
     public class ConfiguracaoBusiness:IConfiguracaoBusiness
     {
         private readonly IConfiguracaoRepository configuracaoRepository;
-        public ConfiguracaoBusiness( IConfiguracaoRepository configuracaoRepository = null)
+        public ConfiguracaoBusiness(IConfiguracaoRepository configuracaoRepository = null)
         {
             this.configuracaoRepository = configuracaoRepository;
         }
@@ -18,10 +19,10 @@ namespace SD_WebSite_DashBoardApi.Business.BusinessImplementation
             throw new NotImplementedException();
         }
 
-        public object FindLast()
+        public object FindByID(int id)
         {
             
-            return configuracaoRepository.FindLast();
+            return configuracaoRepository.FindById(id);
         }
 
         public object UpdateRodape(Rodape rodape)

@@ -21,6 +21,11 @@ namespace SD_WebSite_DashBoardApi.Controllers
             _paginaBusiness = paginaBusiness;
         }
 
+        [HttpGet("GetPaginasComponentesRodapeContato")]
+        public IActionResult GetPaginasComponentesRodapeContato(int idAdmin)
+        {
+            return Ok(_paginaBusiness.GetPaginasComponentesRodapeContato(idAdmin));
+        }
 
         [HttpGet("GetAllPagesAndComponents")]
         public IActionResult GetAllPagesAndComponents( int idAdmin)

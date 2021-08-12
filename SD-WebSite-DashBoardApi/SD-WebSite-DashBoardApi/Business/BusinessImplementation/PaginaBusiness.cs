@@ -9,11 +9,12 @@ namespace SD_WebSite_DashBoardApi.Business.BusinessImplementation
     {
         private readonly IPaginaRepository paginaRepository;
         private readonly IGenericRepository<Pagina> _genericRepository;
-
-        public PaginaBusiness(IPaginaRepository paginaRepository = null, IGenericRepository<Pagina> genericRepository = null)
+        private readonly IConfiguracaoRepository _configuracaoRepository;
+        public PaginaBusiness(IPaginaRepository paginaRepository = null, IGenericRepository<Pagina> genericRepository = null, IConfiguracaoRepository configuracaoRepository = null)
         {
             this.paginaRepository = paginaRepository;
             _genericRepository = genericRepository;
+            _configuracaoRepository = configuracaoRepository;
         }
 
 
@@ -22,10 +23,19 @@ namespace SD_WebSite_DashBoardApi.Business.BusinessImplementation
             return paginaRepository.FindAllPagesAndComponents(idAdmin);
         }
 
+        public object GetPaginasComponentesRodapeContato(int idAdmin)
+        {
+            return new
+            {
+                paginas = paginaRepository.FindAllPagesAndComponents(idAdmin),
+                contatoRodape = _configuracaoRepository.FindById(idAdmin)
+            };
+        }
+
         public object UpdatePage(Pagina pagina)
         {
             Pagina page = _genericRepository.Update(pagina);
-            if (page!=null)
+            if (page != null)
             {
                 return "Pagina " + page.NomePagina + " atualizada";
             }
@@ -34,7 +44,7 @@ namespace SD_WebSite_DashBoardApi.Business.BusinessImplementation
 
         public object UpdatePages(List<Pagina> paginas)
         {
-            
+
             return paginaRepository.UpdatePages(paginas);
         }
 

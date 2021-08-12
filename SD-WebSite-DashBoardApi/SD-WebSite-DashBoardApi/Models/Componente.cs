@@ -10,10 +10,10 @@ namespace SD_WebSite_DashBoardApi.Models
     [Table ("componente")]
     public class Componente:BaseEntity
     {
-        [Column("tipo_componente")]
-        public string TipoComponente { get; set; }
         public virtual List<Imagem> Imagens { get; set; } 
         public virtual Pagina Pagina { get; set; }
+        [Column("tipo_componente")]
+        public string TipoComponente { get; set; }
         [Column("ativo")]
         public bool Ativo { get; set; }
         [Column("titulo")]

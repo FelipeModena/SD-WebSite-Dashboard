@@ -23,8 +23,12 @@ namespace SD_WebSite_DashBoardApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("ModeloSite")
-                        .HasColumnType("longtext")
+                    b.Property<DateTime>("Cadastro")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("cadastro");
+
+                    b.Property<int>("ModeloSite")
+                        .HasColumnType("int")
                         .HasColumnName("modelo_site");
 
                     b.Property<string>("Password")
@@ -41,7 +45,7 @@ namespace SD_WebSite_DashBoardApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("adminstrador");
+                    b.ToTable("administrador");
                 });
 
             modelBuilder.Entity("SD_WebSite_DashBoardApi.Models.Componente", b =>
@@ -273,6 +277,9 @@ namespace SD_WebSite_DashBoardApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
+                    b.Property<long?>("AdministradorId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("CorFundo")
                         .HasColumnType("longtext")
                         .HasColumnName("cor_fundo");
@@ -294,6 +301,8 @@ namespace SD_WebSite_DashBoardApi.Migrations
                         .HasColumnName("rodape_ativo");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AdministradorId");
 
                     b.ToTable("Rodape");
                 });
@@ -329,6 +338,15 @@ namespace SD_WebSite_DashBoardApi.Migrations
                 {
                     b.HasOne("SD_WebSite_DashBoardApi.Models.Administrador", "Administrador")
                         .WithMany("Pagina")
+                        .HasForeignKey("AdministradorId");
+
+                    b.Navigation("Administrador");
+                });
+
+            modelBuilder.Entity("SD_WebSite_DashBoardApi.Models.Rodape", b =>
+                {
+                    b.HasOne("SD_WebSite_DashBoardApi.Models.Administrador", "Administrador")
+                        .WithMany()
                         .HasForeignKey("AdministradorId");
 
                     b.Navigation("Administrador");

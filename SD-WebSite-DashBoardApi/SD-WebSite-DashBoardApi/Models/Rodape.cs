@@ -9,6 +9,8 @@ namespace SD_WebSite_DashBoardApi.Models
 {
     public class Rodape : BaseEntity
     {
+        [Column("administrador")]
+        public Administrador Administrador { get; set; }
         [Column("rodape_ativo")]
         public bool RodapeAtivo { get; set; }
         [Column("cor_fundo")]

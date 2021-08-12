@@ -31,9 +31,9 @@ namespace SD_WebSite_DashBoardApi.Controllers
         }
 
         [HttpGet("getConfiguracoes")]
-        public IActionResult GetConfiguracoes()
+        public IActionResult GetConfiguracoes(int id)
         {
-            return Ok(configuracaoBusiness.FindLast());
+            return Ok(configuracaoBusiness.FindByID(id));
            
         }
 

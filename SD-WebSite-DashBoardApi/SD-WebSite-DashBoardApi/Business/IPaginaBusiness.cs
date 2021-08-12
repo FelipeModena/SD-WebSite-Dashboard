@@ -8,5 +8,6 @@ namespace SD_WebSite_DashBoardApi.Business
         object FindAllPagesAndComponents(int idAdmin);
         object UpdatePages(List<Pagina> paginas);
         object UpdatePage(Pagina pagina);
+        object GetPaginasComponentesRodapeContato(int idAdmin);
     }
 }

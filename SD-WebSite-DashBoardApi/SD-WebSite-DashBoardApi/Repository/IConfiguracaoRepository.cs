@@ -4,7 +4,7 @@ namespace SD_WebSite_DashBoardApi.Repository
 {
     public interface IConfiguracaoRepository
     {
-         object FindLast();
+         object FindById(int id);
         object UpdateRodape(Rodape rodape);
         object UpdateContato(Contato contato);
     }
