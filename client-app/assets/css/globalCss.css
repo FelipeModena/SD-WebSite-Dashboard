@@ -22,9 +22,10 @@
     border-top: none;
     border-left: none;
     border-right: none;
+    padding:6px;
     background: rgb(243, 237, 237);
   }
-  .configuracoes-forms input:focus {
+  .configuracoes-forms input:focus,textarea:focus {
     outline: none;
   }
 

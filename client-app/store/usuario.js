@@ -11,7 +11,7 @@ export const getters = {
 
 export const actions = {
   async Login({ }, user) {
-    this.$axios
+    await this.$axios
       .get("api/administrador/login", {
         params: {
           user: user.username,
@@ -21,10 +21,13 @@ export const actions = {
       .then((response) => {
         console.log(response);
         if (response.status == 200) {
-          localStorage.setItem('adminId', response.data.id);
+          localStorage.setItem('Id', response.data.id);
+          localStorage.setItem('Modelo', response.data.modeloSite);
           this.$router.push("painel");
-          alert("Bem vindo " + response.data);
+          alert("Bem vindo " + response.data.usuario);
+          return true;
         }
+        else return null;
       })
       .catch((error) => {
         console.log(error);
@@ -32,12 +35,12 @@ export const actions = {
   },
   async AutenticatorUser({ commit }) {
     if (process.browser) {
-      if (localStorage.getItem('adminId') == null) {
+      if (localStorage.getItem('Id') == null) {
         //this.$router.push("/");
       }
-      if (localStorage.getItem('adminId') != null) {
+      if (localStorage.getItem('Id') != null) {
         //this.$router.push("/");
-        let id = localStorage.getItem("adminId");
+        let id = localStorage.getItem("Id");
         this.$axios.get("api/administrador",
           {
             params: { id: id }

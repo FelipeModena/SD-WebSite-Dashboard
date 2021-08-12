@@ -11,9 +11,13 @@ export const getters = {
 
 export const actions = {
     getPaginas({ commit }) {
+        let idAdmin;
+        if (process.browser) {
+            idAdmin = localStorage.getItem("Id")
+        }
         let config = {
             params: {
-                idAdmin: 1
+                idAdmin: idAdmin
             }
         }
         return this.$axios.get('api/paginas/GetAllPagesAndComponents', config)
@@ -22,7 +26,7 @@ export const actions = {
                     response.data.sort(function (pag1, pag2) {
                         return pag1.ordem - pag2.ordem;
                     })
-                    console.log("paginas com sucess");
+                    console.log("paginas com sucesso");
                     commit('SET_PAGINAS', response.data);
                 }
             })
@@ -33,6 +37,7 @@ export const actions = {
     salvarAlteracoes({ state }) {
         return this.$axios.put("api/Paginas/updatePaginas", state.paginas)
             .then(response => {
+                alert("Páginas atualizadas com sucesso")
                 console.log(response);
             })
             .catch(error => {
@@ -57,5 +62,12 @@ export const mutations = {
         let index = state.paginas.findIndex(pag => pag.id == pagina.id);
         state.paginas[index] = pagina;
         state.paginas[index].ativa = !state.paginas[index].ativa;
+    },
+    DESATIVA_COMPONENTE(state,componente) {
+        let indexPagina = state.paginas.findIndex(pag => pag.id == componente.paginaId);
+        let indexComponente =state.paginas[indexPagina].componente.findIndex(comp => comp.id == componente.comp.id);
+        state.paginas[indexPagina].componente[indexComponente] = componente.comp
+        state.paginas[indexPagina].componente[indexComponente].ativo = !state.paginas[indexPagina].componente[indexComponente].ativo;
+
     }
 }

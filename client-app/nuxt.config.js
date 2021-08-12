@@ -21,17 +21,24 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    {src:"assets/css/globalCss.css"}
-  ],
+    "assets/css/globalCss.css",
+    "quill/dist/quill.snow.css",
+    "quill/dist/quill.bubble.css",
+    "quill/dist/quill.core.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/dnd-drag.js', mode: 'client' },
-    '~/plugins/url-api.js',
+    { src: '~/plugins/url-api.js' },
+    { src: "~plugins/vue-quill-editor.js", ssr: false },
+
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: [
+    '~/components',
+    { path: '~/components/modal' }
+  ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [

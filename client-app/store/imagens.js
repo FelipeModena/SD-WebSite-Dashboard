@@ -10,10 +10,24 @@ export const actions = {
             }
         })
             .then(response => {
-                //console.log(response);
             })
             .catch(error => {
                 console.log(error);
             })
+    },
+    async deleteImagens({ }, imgs) {
+        imgs = imgs.filter(function (img) {
+            return img !== undefined
+        })
+        if (imgs.length != 0) {
+            await this.$axios.post('api/Imagem/DeleteListImagensId', imgs)
+                .then(response => {
+                    console.log("Deletado " + response.data + "com sucesso");
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
     }
+
 }

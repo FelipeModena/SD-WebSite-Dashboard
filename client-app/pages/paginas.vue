@@ -21,7 +21,9 @@
                 ><p>{{ pag.nomePagina }}</p></strong
               >
             </b-col>
-            <b-col  ><p>{{ pag.url }}</p></b-col>
+            <b-col
+              ><p>{{ pag.url }}</p></b-col
+            >
             <b-col class="d-flex">
               <img
                 width="18px"
@@ -54,9 +56,13 @@
                   <p>Ação</p>
                 </b-col>
               </b-row>
-              <b-row v-for="(componente, compI) in pag.componente" :key="compI" class="  hover-secundario">
-                <b-col >
-                  <p>{{ componente.tipoComponente }}</p>
+              <b-row
+                v-for="(componente, compI) in pag.componente"
+                :key="compI"
+                class="hover-secundario"
+              >
+                <b-col>
+                  <p>{{ componente.tipoComponente }} <span class="text-danger" v-if="componente.ativo==false"> (desativado)</span></p>
                 </b-col>
                 <b-col>
                   <img
@@ -78,7 +84,10 @@
       :title="'Configuração ' + paginaAuxModal.nomePagina"
       hide-footer
     >
-      <div class="configuracoes-forms ">
+      <div class="configuracoes-forms">
+        <label for="modal-pagina-altera-nome-pagina"><strong>Nome pagina</strong></label>
+        <input v-model="paginaAuxModal.nomePagina" id="modal-pagina-altera-nome-pagina" />
+        <br>
         <label for="modal-pagina-altera-url"><strong>Url</strong></label>
         <input v-model="paginaAuxModal.url" id="modal-pagina-altera-url" />
       </div>
@@ -91,7 +100,9 @@
         </div>
       </div>
     </b-modal>
-    <PaginasModalComponentes ref="modalComponentes" />
+    <ModalTemplate1 ref="modalTemplate1" />
+    <ModalTemplate2 ref="modalTemplate2" />
+    <ModalTemplate3 ref="modalTemplate3" />
   </div>
 </template>
 
@@ -108,7 +119,7 @@ export default {
     return {
       paginasC: "",
       paginaAuxModal: "",
-      componenteAConfigurar:'',
+      componenteAConfigurar: "",
     };
   },
   watch: {
@@ -121,7 +132,7 @@ export default {
   methods: {
     ...mapActions({
       getPaginas: "paginas/getPaginas",
-      autenticatorUser:'usuario/AutenticatorUser'
+      autenticatorUser: "usuario/AutenticatorUser",
     }),
     abreColapse(collapseSelecionado) {
       this.$root.$emit("bv::toggle::collapse", collapseSelecionado);
@@ -148,9 +159,28 @@ export default {
       }
       this.$bvModal.hide("modal-pagina-altera");
     },
-    editarComponente(pagina,componente){
-      this.$refs.modalComponentes.getCompoenenteEPaginaId(pagina.nomePagina,componente);
-    }
+    editarComponente(pagina, componente) {
+      if (localStorage.getItem("Modelo") == "1") {
+        console.log("entro 1");
+        this.$refs.modalTemplate1.getCompoenenteEPaginaNome(
+          pagina.nomePagina,
+          componente
+        );
+      }
+      if (localStorage.getItem("Modelo") == "2") {
+        this.$refs.modalTemplate2.getCompoenenteEPaginaNome(
+          pagina.nomePagina,
+          componente
+        );
+      }
+      if (localStorage.getItem("Modelo") == "3") {
+        console.log("entro 3");
+        this.$refs.modalTemplate3.getCompoenenteEPaginaNome(
+          pagina.nomePagina,
+          componente
+        );
+      }
+    },
   },
   created() {
     this.getPaginas();

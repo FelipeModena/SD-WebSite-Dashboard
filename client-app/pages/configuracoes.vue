@@ -17,9 +17,9 @@
           />
         </b-col>
         <b-col>
-          <label for="configuracoes-contato-input-complemento"
-            >Complemento</label
-          >
+          <label for="configuracoes-contato-input-complemento">
+            <strong>Complemento</strong>
+          </label>
           <input
             type="text"
             id="configuracoes-contato-input-complemento"
@@ -27,7 +27,9 @@
           />
         </b-col>
         <b-col>
-          <label for="configuracoes-contato-input-bairro">Bairro</label>
+          <label for="configuracoes-contato-input-bairro"
+            ><strong>Bairro</strong></label
+          >
           <input
             type="text"
             id="configuracoes-contato-input-bairro"
@@ -37,7 +39,9 @@
       </b-row>
       <b-row>
         <b-col>
-          <label for="configuracoes-contato-input-cidade">Cidade</label>
+          <label for="configuracoes-contato-input-cidade"
+            ><strong>Cidade</strong></label
+          >
           <input
             type="text"
             id="configuracoes-contato-input-cidade"
@@ -45,7 +49,9 @@
           />
         </b-col>
         <b-col>
-          <label for="configuracoes-contato-input-estado">Estado</label>
+          <label for="configuracoes-contato-input-estado"
+            ><strong>Estado</strong></label
+          >
           <input
             type="text"
             id="configuracoes-contato-input-estado"
@@ -53,7 +59,9 @@
           />
         </b-col>
         <b-col>
-          <label for="configuracoes-contato-input-telefone">Telefone</label>
+          <label for="configuracoes-contato-input-telefone"
+            ><strong>Telefone</strong></label
+          >
           <input
             type="text"
             id="configuracoes-contato-input-telefone"
@@ -63,7 +71,9 @@
       </b-row>
       <b-row>
         <b-col>
-          <label for="configuracoes-contato-input-whatsapp">WhatsApp</label>
+          <label for="configuracoes-contato-input-whatsapp"
+            ><strong>WhatsApp</strong></label
+          >
           <input
             type="text"
             id="configuracoes-contato-input-whatsapp"
@@ -71,7 +81,9 @@
           />
         </b-col>
         <b-col>
-          <label for="configuracoes-contato-input-email">E-mail</label>
+          <label for="configuracoes-contato-input-email"
+            ><strong>E-mail</strong></label
+          >
           <input
             type="text"
             id="configuracoes-contato-input-email"
@@ -79,7 +91,9 @@
           />
         </b-col>
         <b-col>
-          <label for="configuracoes-contato-input-facebook">Facebook</label>
+          <label for="configuracoes-contato-input-facebook"
+            ><strong>Facebook</strong></label
+          >
           <input
             type="text"
             id="configuracoes-contato-input-facebook"
@@ -89,7 +103,9 @@
       </b-row>
       <b-row>
         <b-col>
-          <label for="configuracoes-contato-input-instagram">Instagram</label>
+          <label for="configuracoes-contato-input-instagram"
+            ><strong>Instagram</strong></label
+          >
           <input
             type="text"
             id="configuracoes-contato-input-instagram"
@@ -97,7 +113,9 @@
           />
         </b-col>
         <b-col>
-          <label for="configuracoes-contato-input-linkedin">Linkedin</label>
+          <label for="configuracoes-contato-input-linkedin"
+            ><strong>Linkedin</strong></label
+          >
           <input
             type="text"
             id="configuracoes-contato-input-linkedin"
@@ -105,7 +123,9 @@
           />
         </b-col>
         <b-col>
-          <label for="configuracoes-contato-input-youtube">Youtube</label>
+          <label for="configuracoes-contato-input-youtube"
+            ><strong>Youtube</strong></label
+          >
           <input
             type="text"
             id="configuracoes-contato-input-youtube"
@@ -143,7 +163,9 @@
           </select>
         </b-col>
         <b-col>
-          <label for="configuracoes-rodape-input-complemento">Cor fundo</label>
+          <label for="configuracoes-rodape-input-complemento"
+            ><strong>Cor fundo</strong></label
+          >
 
           <ColorPicker
             v-model="rodape.corFundo"
@@ -152,7 +174,7 @@
         </b-col>
         <b-col>
           <label for="configuracoes-rodape-input-icones"
-            >Icones de redes sociais</label
+            ><strong>Icones de redes sociais</strong></label
           >
           <select
             id="configuracoes-rodape-input-icones"
@@ -165,7 +187,9 @@
       </b-row>
       <b-row class="w-25">
         <b-col>
-          <label for="configuracoes-rodape-input-logo">Logo do rodapé</label>
+          <label for="configuracoes-rodape-input-logo"
+            ><strong>Logo do rodapé</strong></label
+          >
 
           <input type="file" id="configuracoes-rodape-input-logo" />
           <span v-if="this.rodape.logo != null"
@@ -208,6 +232,7 @@ export default {
   watch: {
     configuracoes: function (newVal, oldVal) {
       if (newVal != null) {
+        console.log(newVal);
         this.contato = Object.assign({}, newVal.contato);
         this.rodape = Object.assign({}, newVal.rodape);
       }
@@ -232,11 +257,14 @@ export default {
         if (this.rodape == this.configuracoes.rodape) {
           return;
         }
-        if (logoRodape.length != 0) {
-          this.rodape.logo = logoRodape[0].name;
+        let logoInput = $("#configuracoes-rodape-input-logo")[0].files;
+        console.log(logoInput);
+        if (logoInput.length != 0) {
+          this.rodape.logo = logoInput[0].name;
+          logoInput=[logoInput]
+          this.postImagem(logoInput[0]);
         }
-        this.postImagem(logoRodape);
-        this.putRodape({ rodape: this.rodape, file: this.imgLogoFile });
+        this.putRodape({ rodape: this.rodape });
       }
     },
 

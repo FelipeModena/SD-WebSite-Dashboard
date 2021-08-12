@@ -16,7 +16,7 @@
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav class="ml-auto">
-            <b-nav-item-dropdown id="nav-item-texto-editor" :text="usuario.nome" right>
+            <b-nav-item-dropdown id="nav-item-texto-editor" :text="usuario.nome+'   #'+usuario.id" right>
               <b-dropdown-item @click="deslogar">Sair</b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>
@@ -28,7 +28,7 @@
         <div
           v-for="(opcao, index) in opcoes"
           :key="index"
-          class="px-1 py-5 text-center"
+          class="px-1 py-5 text-center "
           @click="rotaMenu(opcao.rota, index)"
           :id="'side-menu-opcao-default-' + index"
         >
@@ -50,13 +50,13 @@
       </div>
       <Nuxt />
     </main>
-    <footer class="w-100 text-center bg-success py-4">
+    <footer id="layout-default-footer" class="w-100 text-center  py-4">
       <img
         width="100px"
         src="~/assets/icones/shark-mascote-positivo.png"
         alt=""
       />
-      <h5>DashBoard-SharkData</h5>
+      <h5>-DashBoard-</h5>
     </footer>
   </div>
 </template>
@@ -84,7 +84,8 @@ export default {
       getPaginas: "paginas/getPaginas",
     }),
     deslogar() {
-      localStorage.removeItem("adminId");
+      localStorage.removeItem("Id");
+      localStorage.removeItem("Modelo");
       this.$router.push("/");
     },
     rotaMenu(rota, index) {
@@ -103,7 +104,7 @@ export default {
 };
 </script>
 <style scoped>
-#layout-default-nav-bar {
+#layout-default-nav-bar ,#layout-default-footer{
   background: #0f1450;
   color: white !important;
   transition: 0.4s;
@@ -117,8 +118,6 @@ export default {
   background: rgb(217, 217, 238);
 }
 #layout-default-side-bar {
-  height: 1000px;
-  width: 200px;
   background: #c3c3c3;
 }
 #layout-default-side-bar div {

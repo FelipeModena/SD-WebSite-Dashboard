@@ -10,7 +10,15 @@ export const getters = {
 }
 export const actions = {
     async getConfiguracoes({ commit }) {
-        return this.$axios.get("api/Administrador/getConfiguracoes")
+        let idAdmin;
+        if(process.browser){
+            idAdmin=localStorage.getItem("Id")
+        }
+        return this.$axios.get("api/Administrador/getConfiguracoes",{
+            params: {
+              id: idAdmin,
+            },
+          })
             .then((response) => {
                 commit('SET_CONFIGURACOES', response.data);
             })
@@ -19,21 +27,9 @@ export const actions = {
             });
     },
     async putRodape({ commit }, config) {
-        if (config.file != null) {
-            
-            await this.$axios.post("api/Imagem/PostImage",config.file)
-            .then(reponse=>{
-                console.log(response);
-                alert("Configurações do rodapé atuailizadas com sucesso");
-            })
-            .catch(error=>{
-                console.log(error);
-            })
-
-        }
         this.$axios.put("api/Administrador/configureRodape", config.rodape)
             .then(response => {
-                console.log(response.data);
+                alert("Configurações do Contato atuailizadas com sucesso");
             })
             .catch(error => {
                 console.log(error);
@@ -42,7 +38,6 @@ export const actions = {
     putContato({ commit }, config) {
         this.$axios.put("api/Administrador/configureContato", config.contato)
             .then(response => {
-                console.log(response.data);
                 alert("Configurações do Contato atuailizadas com sucesso");
             })
             .catch(error => {
