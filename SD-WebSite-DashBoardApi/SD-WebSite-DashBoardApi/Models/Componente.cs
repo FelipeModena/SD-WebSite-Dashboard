@@ -36,7 +36,8 @@ namespace SD_WebSite_DashBoardApi.Models
         public string CorBotao1 { get; set; }
         [Column("url_direcionamento_paginas")]
         public string UrlDirecionamentoPaginas { get; set; }
-
+        [Column("ordem")]
+        public int Ordem { get; set; }
 
     }
 }
