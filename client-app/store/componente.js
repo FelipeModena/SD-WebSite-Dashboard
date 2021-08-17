@@ -13,8 +13,7 @@ export const actions = {
       await this.$axios
       .put("api/Componentes/updateComponente", componente)
       .then((response) => {
-        alert(response.data.msg);
-        console.log(response);
+        return response.data.msg;
       })
       .catch((error) => {
         alert("Ocorreu um erro ao salvar o componente, tente novamente");

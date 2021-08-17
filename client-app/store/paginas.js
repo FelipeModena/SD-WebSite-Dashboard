@@ -22,8 +22,12 @@ export const actions = {
         }
         return this.$axios.get('api/paginas/GetAllPagesAndComponents', config)
             .then((response) => {
+                console.log(response.data);
                 if (response.data) {
                     response.data.sort(function (pag1, pag2) {
+                        pag1.componente.sort((c1, c2) => {
+                            return c1.ordem - c2.ordem;
+                        })
                         return pag1.ordem - pag2.ordem;
                     })
                     console.log("paginas com sucesso");
@@ -63,9 +67,9 @@ export const mutations = {
         state.paginas[index] = pagina;
         state.paginas[index].ativa = !state.paginas[index].ativa;
     },
-    DESATIVA_COMPONENTE(state,componente) {
+    DESATIVA_COMPONENTE(state, componente) {
         let indexPagina = state.paginas.findIndex(pag => pag.id == componente.paginaId);
-        let indexComponente =state.paginas[indexPagina].componente.findIndex(comp => comp.id == componente.comp.id);
+        let indexComponente = state.paginas[indexPagina].componente.findIndex(comp => comp.id == componente.comp.id);
         state.paginas[indexPagina].componente[indexComponente] = componente.comp
         state.paginas[indexPagina].componente[indexComponente].ativo = !state.paginas[indexPagina].componente[indexComponente].ativo;
 

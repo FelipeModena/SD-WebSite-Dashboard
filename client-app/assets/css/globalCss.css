@@ -76,3 +76,7 @@ background: rgb(0, 83, 0);
     font-style: italic;
 
 }
+
+.rotate-180{
+    transform: rotate(180deg);
+}
