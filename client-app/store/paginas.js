@@ -24,12 +24,7 @@ export const actions = {
             .then((response) => {
                 console.log(response.data);
                 if (response.data) {
-                    response.data.sort(function (pag1, pag2) {
-                        pag1.componente.sort((c1, c2) => {
-                            return c1.ordem - c2.ordem;
-                        })
-                        return pag1.ordem - pag2.ordem;
-                    })
+
                     console.log("paginas com sucesso");
                     commit('SET_PAGINAS', response.data);
                 }
@@ -52,8 +47,18 @@ export const actions = {
 }
 
 export const mutations = {
-    SET_PAGINAS(state, paginas) {
-        state.paginas = paginas;
+    SET_PAGINAS(state, paginasAxios) {
+
+        paginasAxios.sort(function (pag1, pag2) {
+            return pag1.ordem - pag2.ordem;
+        })
+
+        paginasAxios.forEach((pag, index) => {
+            paginasAxios[index].componente.sort(function (pag1, pag2) {
+                return pag1.ordem - pag2.ordem;
+            })
+        });
+        state.paginas = paginasAxios;
     },
     async REORDER_PAGINAS(state, paginas) {
         for (let index = 0; index < paginas.length; index++) {
@@ -72,6 +77,8 @@ export const mutations = {
         let indexComponente = state.paginas[indexPagina].componente.findIndex(comp => comp.id == componente.comp.id);
         state.paginas[indexPagina].componente[indexComponente] = componente.comp
         state.paginas[indexPagina].componente[indexComponente].ativo = !state.paginas[indexPagina].componente[indexComponente].ativo;
-
+    },
+    ORDDENA_COMPONENTE(state,paginas){
+        state.paginas = paginas;
     }
 }
