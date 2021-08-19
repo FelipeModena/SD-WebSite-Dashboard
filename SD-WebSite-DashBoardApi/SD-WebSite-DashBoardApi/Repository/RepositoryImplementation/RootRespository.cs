@@ -274,6 +274,13 @@ namespace SD_WebSite_DashBoardApi.Repository.RepositoryImplementation
                             Pagina = pagina
                         });
 
+                                                                        _myDbContext.Componente.Add(new Componente
+                        {
+                            TipoComponente = "TEXTO CENTRALIZADO",
+                            Ativo = true,
+                            Pagina = pagina
+                        });
+
                                                 _myDbContext.Componente.Add(new Componente
                         {
                             TipoComponente = "BANNER",
@@ -281,12 +288,6 @@ namespace SD_WebSite_DashBoardApi.Repository.RepositoryImplementation
                             Pagina = pagina
                         });
 
-                                                _myDbContext.Componente.Add(new Componente
-                        {
-                            TipoComponente = "BANNER PRINCIPAL",
-                            Ativo = true,
-                            Pagina = pagina
-                        });
 
                                                 _myDbContext.Componente.Add(new Componente
                         {
@@ -371,7 +372,7 @@ namespace SD_WebSite_DashBoardApi.Repository.RepositoryImplementation
 
                                                                                                 _myDbContext.Componente.Add(new Componente
                         {
-                            TipoComponente = "FORMULARIO E IFRAME MAPS",
+                            TipoComponente = "FORMULARIO E CONTATOS",
                             Ativo = true,
                             Pagina = pagina
                         });
