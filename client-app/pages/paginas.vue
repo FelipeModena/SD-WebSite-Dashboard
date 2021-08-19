@@ -62,7 +62,13 @@
                 class="hover-secundario"
               >
                 <b-col>
-                  <p>{{ componente.tipoComponente }} <span class="text-danger" v-if="componente.ativo==false"> (desativado)</span></p>
+                  <p>
+                    {{ componente.tipoComponente }}
+                    <span class="text-danger" v-if="componente.ativo == false">
+                      (desativado)</span
+                    >
+                    <span class="text-success" v-else> (ativo)</span>
+                  </p>
                 </b-col>
                 <b-col>
                   <img
@@ -85,9 +91,14 @@
       hide-footer
     >
       <div class="configuracoes-forms">
-        <label for="modal-pagina-altera-nome-pagina"><strong>Nome pagina</strong></label>
-        <input v-model="paginaAuxModal.nomePagina" id="modal-pagina-altera-nome-pagina" />
-        <br>
+        <label for="modal-pagina-altera-nome-pagina"
+          ><strong>Nome pagina</strong></label
+        >
+        <input
+          v-model="paginaAuxModal.nomePagina"
+          id="modal-pagina-altera-nome-pagina"
+        />
+        <br />
         <label for="modal-pagina-altera-url"><strong>Url</strong></label>
         <input v-model="paginaAuxModal.url" id="modal-pagina-altera-url" />
       </div>
